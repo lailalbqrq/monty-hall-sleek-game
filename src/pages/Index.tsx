@@ -75,7 +75,7 @@ const Index = () => {
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-2 animate-fade-in">
           <h1 className="text-4xl font-semibold text-gray-900">Monty Hall Game</h1>
-          <p className="text-gray-600">Put your probability intuition to the test!</p>
+          <p className="text-gray-600">Put your intuition to the test!</p>
         </div>
 
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
