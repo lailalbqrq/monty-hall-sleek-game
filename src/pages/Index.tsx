@@ -1,10 +1,11 @@
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
 import { GameInstructions } from "@/components/GameInstructions";
 import { toast } from "sonner";
 import { Toggle } from "@/components/ui/toggle";
+import { ModeToggle } from "@/components/ModeToggle";
 
 const Index = () => {
   const [gameState, setGameState] = useState<"selecting" | "revealed" | "finished">("selecting");
@@ -40,6 +41,12 @@ const Index = () => {
       position: "bottom-center",
     });
   }, [gameMode]);
+
+  useEffect(() => {
+    resetGame();
+  }, [gameMode, resetGame]
+  ) 
+
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
       setGameState("selecting");
@@ -120,8 +127,7 @@ const Index = () => {
 
         <div className="flex justify-center gap-8 py-8">
           
-          <Toggle onClick={handleGameMode}>
-            change game mode </Toggle>
+          <ModeToggle handleGameMode={handleGameMode} />
         </div>
 
         <GameInstructions />

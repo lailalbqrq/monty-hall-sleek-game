@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DoorClosed, Car, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -37,7 +36,9 @@ export const Door = ({
         className={cn(
           "door-wrapper",
           isRevealed && "animate-door-open",
-          isSelected && !isRevealed && "ring-4 ring-primary ring-offset-4 shadow-lg"
+          isSelected &&
+            !isRevealed &&
+            "ring-4 ring-primary ring-offset-4 shadow-lg"
         )}
       >
         <div className="door-front flex flex-col items-center justify-center gap-4">
@@ -48,10 +49,12 @@ export const Door = ({
               isSelected && !isRevealed && "text-primary"
             )}
           />
-          <span className={cn(
-            "text-xl font-semibold",
-            isSelected && !isRevealed ? "text-primary" : "text-gray-700"
-          )}>
+          <span
+            className={cn(
+              "text-xl font-semibold",
+              isSelected && !isRevealed ? "text-primary" : "text-gray-700"
+            )}
+          >
             {doorNumber}
             {isSelected && !isRevealed && " (Selected)"}
           </span>
