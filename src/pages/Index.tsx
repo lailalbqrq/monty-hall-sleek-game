@@ -24,6 +24,7 @@ const Index = () => {
       isSelected: false,
     })));
     setGameState("selecting");
+    toast("Pick a door to play!");
   }, []);
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
