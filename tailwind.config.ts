@@ -55,7 +55,7 @@ export default {
       keyframes: {
         "door-open": {
           "0%": { transform: "perspective(1000px) rotateY(0deg)" },
-          "100%": { transform: "perspective(1000px) rotateY(-105deg)" },
+          "100%": { transform: "perspective(1000px) rotateY(-180deg)" },
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },
