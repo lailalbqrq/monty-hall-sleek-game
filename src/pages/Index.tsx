@@ -8,6 +8,7 @@ import { Toggle } from "@/components/ui/toggle";
 
 const Index = () => {
   const [gameState, setGameState] = useState<"selecting" | "revealed" | "finished">("selecting");
+  const [gameMode, setMode] = useState<3 | 4>(3);
   const [doors, setDoors] = useState(() => {
     const prizeLocation = Math.floor(Math.random() * gameMode);
     return Array(gameMode).fill(null).map((_, i) => ({
@@ -16,7 +17,6 @@ const Index = () => {
       isSelected: false,
     }));
   });
-  const [gameMode, setMode] = useState<3 | 4>(3);
   const handleGameMode = () => {
     if(gameMode === 4)
     {
@@ -39,7 +39,7 @@ const Index = () => {
     toast("Pick a door to play!", {
       position: "bottom-center",
     });
-  }, []);
+  }, [gameMode]);
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
       setGameState("selecting");
