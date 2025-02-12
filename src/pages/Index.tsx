@@ -49,20 +49,23 @@ const Index = () => {
       const newDoors = doors.map((door, i) => ({
         ...door,
         isRevealed: true,
+        // Only update the selected state for the final choice
         isSelected: i === doorIndex,
       }));
       
       setDoors(newDoors);
       setGameState("finished");
       
+      // Check if the final door choice has the prize
       const won = newDoors[doorIndex].hasPrize;
       setStats(prev => ({
         gamesPlayed: prev.gamesPlayed + 1,
         gamesWon: prev.gamesWon + (won ? 1 : 0),
       }));
       
-      toast(won ? "Congratulations! You won!" : "Sorry, you lost!");
+      toast(won ? "Congratulations! You won! 🎉" : "Sorry, you lost! Try again!");
       
+      // Reset the game after a delay
       setTimeout(resetGame, 3000);
     }
   }, [doors, gameState, resetGame]);
