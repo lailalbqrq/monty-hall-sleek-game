@@ -28,7 +28,7 @@ export const ModeToggle = (
                           peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
                           after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600">
           </div>
-          <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>
+          <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Hard Mode</span>
         </label>
       );
     }

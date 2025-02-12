@@ -33,7 +33,7 @@ const Index = () => {
     toast("Pick a door to play!", {
       position: "bottom-center",
     });
-  }, []);
+  }, [gameMode]);
 
   useEffect(() => {
     resetGame();
@@ -87,7 +87,7 @@ const Index = () => {
       });
 
       // Reset the game after a delay
-      setTimeout(resetGame, 3000);
+      setTimeout(resetGame, 800);
     }
   }, [doors, gameState, resetGame]);
 
@@ -101,7 +101,12 @@ const Index = () => {
 
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
 
-        <div className={`grid grid-cols-1 ${gameMode === 3 ? "md:grid-cols-3" : "md:grid-cols-4"} gap-8 py-8`}>
+        <div className="flex justify-center">
+          
+          <ModeToggle handleGameMode={handleGameMode} />
+        </div>
+
+        <div className={`grid grid-cols-1 md:grid-cols-${gameMode} gap-8 py-8`}>
           {doors.map((door, index) => (
             <Door
               key={index}
@@ -116,11 +121,6 @@ const Index = () => {
               onSelect={handleDoorSelect}
             />
           ))}
-        </div>
-
-        <div className="flex justify-center gap-8 py-8">
-          
-          <ModeToggle handleGameMode={handleGameMode} />
         </div>
 
         <GameInstructions />
