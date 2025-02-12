@@ -15,7 +15,6 @@ const Index = () => {
       isSelected: false,
     }));
   });
-  toast("Pick a door to play!");
   const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
   const resetGame = useCallback(() => {
     const prizeLocation = Math.floor(Math.random() * 3);
