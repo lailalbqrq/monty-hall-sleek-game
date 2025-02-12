@@ -37,17 +37,24 @@ export const Door = ({
         className={cn(
           "door-wrapper",
           isRevealed && "animate-door-open",
-          isSelected && !isRevealed && "ring-2 ring-primary ring-offset-2"
+          isSelected && !isRevealed && "ring-4 ring-primary ring-offset-4 shadow-lg"
         )}
       >
         <div className="door-front flex flex-col items-center justify-center gap-4">
           <DoorClosed
             className={cn(
               "w-16 h-16 text-gray-600 transition-transform duration-300",
-              isHovered && isSelectable && "scale-110"
+              isHovered && isSelectable && "scale-110",
+              isSelected && !isRevealed && "text-primary"
             )}
           />
-          <span className="text-2xl font-semibold text-gray-700">Door {doorNumber}</span>
+          <span className={cn(
+            "text-2xl font-semibold",
+            isSelected && !isRevealed ? "text-primary" : "text-gray-700"
+          )}>
+            Door {doorNumber}
+            {isSelected && !isRevealed && " (Selected)"}
+          </span>
         </div>
         <div className="door-back flex items-center justify-center">
           {hasPrize ? (
