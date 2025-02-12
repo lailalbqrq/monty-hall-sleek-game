@@ -25,6 +25,7 @@ const Index = () => {
       isSelected: false,
     })));
     setGameState("selecting");
+    toast("Pick a door to play!");
   }, []);
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
@@ -43,7 +44,7 @@ const Index = () => {
       
       setDoors(newDoors);
       setGameState("revealed");
-      toast("Would you like to switch your choice?");
+      toast("Would you like to stay or switch?");
     } else if (gameState === "revealed") {
       // Final selection
       const newDoors = doors.map((door, i) => ({
