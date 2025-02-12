@@ -24,12 +24,16 @@ const Index = () => {
       isSelected: false,
     })));
     setGameState("selecting");
-    toast("Pick a door to play!");
+    toast("Pick a door to play!",{
+      position: "bottom-center",
+    });
   }, []);
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
       setGameState("selecting");
-      toast("Pick a door to play!");
+      toast("Pick a door to play!",{
+        position: "bottom-center",
+      });
       // First selection
       const newDoors = [...doors];
       newDoors[doorIndex].isSelected = true;
@@ -44,7 +48,9 @@ const Index = () => {
       
       setDoors(newDoors);
       setGameState("revealed");
-      toast("Would you like to stay or switch?");
+      toast("Would you like to stay or switch?",{
+        position: "bottom-center",
+      });
     } else if (gameState === "revealed") {
       // Final selection
       const newDoors = doors.map((door, i) => ({
@@ -64,7 +70,9 @@ const Index = () => {
         gamesWon: prev.gamesWon + (won ? 1 : 0),
       }));
       
-      toast(won ? "Congratulations! You won! 🎉" : "Sorry, you lost! Try again!");
+      toast(won ? "Congratulations! You won! 🎉" : "Sorry, you lost! Try again!",{
+        position: "bottom-center",
+      });
       
       // Reset the game after a delay
       setTimeout(resetGame, 3000);

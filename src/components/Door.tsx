@@ -43,24 +43,24 @@ export const Door = ({
         <div className="door-front flex flex-col items-center justify-center gap-4">
           <DoorClosed
             className={cn(
-              "w-16 h-16 text-gray-600 transition-transform duration-300",
+              "w-24 h-24 text-gray-600 transition-transform duration-300",
               isHovered && isSelectable && "scale-110",
               isSelected && !isRevealed && "text-primary"
             )}
           />
           <span className={cn(
-            "text-2xl font-semibold",
+            "text-xl font-semibold",
             isSelected && !isRevealed ? "text-primary" : "text-gray-700"
           )}>
-            Door {doorNumber}
+            {doorNumber}
             {isSelected && !isRevealed && " (Selected)"}
           </span>
         </div>
         <div className="door-back flex items-center justify-center">
           {hasPrize ? (
-            <Car className="w-16 h-16 text-primary animate-fade-in" />
+            <Car className="w-24 h-24 text-primary animate-fade-in" />
           ) : (
-            <X className="w-16 h-16 text-gray-400 animate-fade-in" />
+            <X className="w-24 h-24 text-gray-400 animate-fade-in" />
           )}
         </div>
       </div>
