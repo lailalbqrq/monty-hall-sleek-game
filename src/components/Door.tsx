@@ -31,7 +31,7 @@ export const Door = ({
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => isSelectable && onSelect(doorNumber)}
+      onClick={() => isSelectable && onSelect(doorNumber - 1)}
     >
       <div
         className={cn(
