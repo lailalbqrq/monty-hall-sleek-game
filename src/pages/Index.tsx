@@ -16,7 +16,6 @@ const Index = () => {
     }));
   });
   const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
-      toast("Pick a door to play!");
   const resetGame = useCallback(() => {
     const prizeLocation = Math.floor(Math.random() * 3);
     setDoors(Array(3).fill(null).map((_, i) => ({
@@ -25,6 +24,7 @@ const Index = () => {
       isSelected: false,
     })));
     setGameState("selecting");
+    toast("Pick a door to play!");
   }, []);
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
