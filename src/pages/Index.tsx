@@ -19,14 +19,7 @@ const Index = () => {
     }));
   });
   const handleGameMode = () => {
-    if(gameMode === 4)
-    {
-      setMode(3)
-    }
-    if(gameMode === 3)
-      {
-        setMode(4)
-      }
+    setMode((prevMode) => (prevMode === 3 ? 4 : 3));
   }
   const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
   const resetGame = useCallback(() => {
@@ -40,7 +33,7 @@ const Index = () => {
     toast("Pick a door to play!", {
       position: "bottom-center",
     });
-  }, [gameMode]);
+  }, []);
 
   useEffect(() => {
     resetGame();
@@ -49,7 +42,7 @@ const Index = () => {
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
-      setGameState("selecting");
+      
       toast("Pick a door to play!", {
         position: "bottom-center",
       });
@@ -108,7 +101,7 @@ const Index = () => {
 
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-8">
+        <div className={`grid grid-cols-1 ${gameMode === 3 ? "md:grid-cols-3" : "md:grid-cols-4"} gap-8 py-8`}>
           {doors.map((door, index) => (
             <Door
               key={index}
