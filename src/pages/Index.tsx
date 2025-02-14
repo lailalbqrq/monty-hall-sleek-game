@@ -101,16 +101,17 @@ const Index = () => {
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
 
         <div className="w-full max-w-xs mx-auto px-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium">Number of Doors: {numDoors}</span>
-          </div>
-          <Slider 
+          <Slider className="mb-4"
             defaultValue={[3]} 
             max={8} 
             min={3} 
             step={1} 
             onValueChange={handleNumDoorsChange}
           />
+          <div className="flex items-center justify-center mb-2">
+            <span className="text-sm font-medium">Difficulty Level {numDoors-2}</span>
+          </div>
+          
         </div>
 
         <div className={`grid ${getGridCols(numDoors)} gap-4 py-8`}>
