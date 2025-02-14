@@ -4,27 +4,28 @@ import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
 import { GameInstructions } from "@/components/GameInstructions";
 import { toast } from "sonner";
-import { Toggle } from "@/components/ui/toggle";
-import { ModeToggle } from "@/components/ModeToggle";
+import { Slider } from "@/components/ui/slider";
 
 const Index = () => {
   const [gameState, setGameState] = useState<"selecting" | "revealed" | "finished">("selecting");
-  const [gameMode, setMode] = useState<3 | 4>(3);
+  const [numDoors, setNumDoors] = useState<number>(3);
   const [doors, setDoors] = useState(() => {
-    const prizeLocation = Math.floor(Math.random() * gameMode);
-    return Array(gameMode).fill(null).map((_, i) => ({
+    const prizeLocation = Math.floor(Math.random() * numDoors);
+    return Array(numDoors).fill(null).map((_, i) => ({
       hasPrize: i === prizeLocation,
       isRevealed: false,
       isSelected: false,
     }));
   });
-  const handleGameMode = () => {
-    setMode((prevMode) => (prevMode === 3 ? 4 : 3));
+
+  const handleNumDoorsChange = (value: number[]) => {
+    setNumDoors(value[0]);
   }
+
   const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
   const resetGame = useCallback(() => {
-    const prizeLocation = Math.floor(Math.random() * gameMode);
-    setDoors(Array(gameMode).fill(null).map((_, i) => ({
+    const prizeLocation = Math.floor(Math.random() * numDoors);
+    setDoors(Array(numDoors).fill(null).map((_, i) => ({
       hasPrize: i === prizeLocation,
       isRevealed: false,
       isSelected: false,
@@ -33,20 +34,15 @@ const Index = () => {
     toast("Pick a door to play!", {
       position: "bottom-center",
     });
-  }, [gameMode]);
+  }, [numDoors]);
 
   useEffect(() => {
     resetGame();
-  }, [gameMode, resetGame]
+  }, [numDoors, resetGame]
   ) 
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
-      
-      toast("Pick a door to play!", {
-        position: "bottom-center",
-      });
-      // First selection
       const newDoors = [...doors];
       newDoors[doorIndex].isSelected = true;
 
@@ -64,18 +60,15 @@ const Index = () => {
         position: "bottom-center",
       });
     } else if (gameState === "revealed") {
-      // Final selection
       const newDoors = doors.map((door, i) => ({
         ...door,
         isRevealed: true,
-        // Only update the selected state for the final choice
         isSelected: i === doorIndex,
       }));
 
       setDoors(newDoors);
       setGameState("finished");
 
-      // Check if the final door choice has the prize
       const won = newDoors[doorIndex].hasPrize;
       setStats(prev => ({
         gamesPlayed: prev.gamesPlayed + 1,
@@ -86,10 +79,16 @@ const Index = () => {
         position: "bottom-center",
       });
 
-      // Reset the game after a delay
       setTimeout(resetGame, 800);
     }
   }, [doors, gameState, resetGame]);
+
+  const getGridCols = (numDoors: number) => {
+    if (numDoors <= 3) return 'grid-cols-3';
+    if (numDoors <= 4) return 'grid-cols-2 md:grid-cols-4';
+    if (numDoors <= 6) return 'grid-cols-2 md:grid-cols-3';
+    return 'grid-cols-2 md:grid-cols-4';
+  };
 
   return (
     <div className="min-h-screen bg-slate-200 py-12 px-4">
@@ -101,11 +100,20 @@ const Index = () => {
 
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
 
-        <div className="flex justify-center">
-          <ModeToggle handleGameMode={handleGameMode} />
+        <div className="w-full max-w-xs mx-auto px-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium">Number of Doors: {numDoors}</span>
+          </div>
+          <Slider 
+            defaultValue={[3]} 
+            max={8} 
+            min={3} 
+            step={1} 
+            onValueChange={handleNumDoorsChange}
+          />
         </div>
 
-        <div className={`${gameMode === 3 ? 'flex' : 'grid grid-cols-2'} gap-4 md:grid ${gameMode === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} md:gap-8 py-8`}>
+        <div className={`grid ${getGridCols(numDoors)} gap-4 py-8`}>
           {doors.map((door, index) => (
             <Door
               key={index}
@@ -123,7 +131,6 @@ const Index = () => {
         </div>
 
         <GameInstructions />
-
       </div>
     </div>
   );
