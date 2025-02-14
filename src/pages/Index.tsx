@@ -1,3 +1,4 @@
+
 import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
@@ -101,11 +102,10 @@ const Index = () => {
         <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
 
         <div className="flex justify-center">
-          
           <ModeToggle handleGameMode={handleGameMode} />
         </div>
 
-        <div className={`grid grid-cols-1 ${gameMode === 3 ? "md:grid-cols-3" : "md:grid-cols-4"} gap-8 py-8`}>
+        <div className="flex overflow-x-auto pb-4 gap-4 md:grid md:grid-cols-3 md:gap-8 py-8">
           {doors.map((door, index) => (
             <Door
               key={index}
