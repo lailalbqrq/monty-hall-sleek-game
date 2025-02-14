@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
@@ -92,7 +91,7 @@ const Index = () => {
   }, [doors, gameState, resetGame]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-50 to-white py-12 px-4">
+    <div className="min-h-screen bg-slate-200 py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-2 animate-fade-in">
           <h1 className="text-4xl font-semibold text-gray-900">Monty Hall Game</h1>
