@@ -105,7 +105,7 @@ const Index = () => {
           <ModeToggle handleGameMode={handleGameMode} />
         </div>
 
-        <div className={`flex gap-4 md:grid ${gameMode === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} md:gap-8 py-8`}>
+        <div className={`${gameMode === 3 ? 'flex' : 'grid grid-cols-2'} gap-4 md:grid ${gameMode === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} md:gap-8 py-8`}>
           {doors.map((door, index) => (
             <Door
               key={index}
