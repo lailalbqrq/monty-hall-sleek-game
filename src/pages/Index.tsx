@@ -86,15 +86,16 @@ const Index = () => {
   const getGridCols = (numDoors: number) => {
     if (numDoors <= 3) return 'grid-cols-3';
     if (numDoors <= 4) return 'grid-cols-2 md:grid-cols-4';
-    if (numDoors <= 6) return 'grid-cols-2 md:grid-cols-3';
-    return 'grid-cols-2 md:grid-cols-4';
+    if (numDoors <= 6) return 'grid-cols-3 md:grid-cols-3';
+    if (numDoors <= 8) return 'grid-cols-4 md:grid-cols-4';
+    return 'grid-cols-4 md:grid-cols-4';
   };
 
   return (
-    <div className="min-h-screen bg-slate-200 py-12 px-4">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-200 py-8 px-2 md:py-12 md:px-4">
+      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
         <div className="text-center space-y-2 animate-fade-in">
-          <h1 className="text-4xl font-semibold text-gray-900">Monty Hall Game</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">Monty Hall Game</h1>
           <p className="text-gray-600">Put your intuition to the test!</p>
         </div>
 
@@ -114,7 +115,7 @@ const Index = () => {
           
         </div>
 
-        <div className={`grid ${getGridCols(numDoors)} gap-4 py-8`}>
+        <div className={`grid ${getGridCols(numDoors)} gap-2 md:gap-4 py-4 md:py-8`}>
           {doors.map((door, index) => (
             <Door
               key={index}

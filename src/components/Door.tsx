@@ -25,7 +25,7 @@ export const Door = ({
   return (
     <div
       className={cn(
-        "w-full aspect-[2/3] perspective cursor-pointer transition-transform duration-300",
+        "w-full aspect-[3/4] perspective cursor-pointer transition-transform duration-300",
         isSelectable && "hover:scale-105",
         !isSelectable && "opacity-80 cursor-not-allowed"
       )}
@@ -39,20 +39,20 @@ export const Door = ({
           isRevealed && "animate-door-open",
           isSelected &&
             !isRevealed &&
-            "ring-4 ring-primary ring-offset-4 shadow-lg"
+            "ring-2 ring-primary ring-offset-2 md:ring-4 md:ring-offset-4 shadow-lg"
         )}
       >
-        <div className="door-front flex flex-col items-center justify-center gap-4">
+        <div className="door-front flex flex-col items-center justify-center gap-2 md:gap-4">
           <DoorClosed
             className={cn(
-              "w-12 h-12 md:w-16 md:h-16 text-gray-600 transition-transform duration-300",
+              "w-8 h-8 md:w-12 md:h-12 text-gray-600 transition-transform duration-300",
               isHovered && isSelectable && "scale-110",
               isSelected && !isRevealed && "text-primary"
             )}
           />
           <span
             className={cn(
-              "text-lg md:text-xl font-semibold",
+              "text-base md:text-lg font-semibold",
               isSelected && !isRevealed ? "text-primary" : "text-gray-700"
             )}
           >
@@ -62,9 +62,9 @@ export const Door = ({
         </div>
         <div className="door-back flex items-center justify-center">
           {hasPrize ? (
-            <Car className="w-12 h-12 md:w-16 md:h-16 text-primary animate-fade-in" />
+            <Car className="w-8 h-8 md:w-12 md:h-12 text-primary animate-fade-in" />
           ) : (
-            <X className="w-12 h-12 md:w-16 md:h-16 text-gray-400 animate-fade-in" />
+            <X className="w-8 h-8 md:w-12 md:h-12 text-gray-400 animate-fade-in" />
           )}
         </div>
       </div>
