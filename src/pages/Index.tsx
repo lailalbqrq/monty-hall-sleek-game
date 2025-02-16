@@ -93,7 +93,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-teal-800 py-8 px-2 md:py-12 md:px-4">
-      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 border-4 border-teal-700/50 rounded-lg p-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] bg-teal-800 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 p-6 bg-teal-800 relative overflow-hidden">
         <div className="trapezium-corner trapezium-top-left" />
         <div className="trapezium-corner trapezium-top-right" />
         <div className="trapezium-corner trapezium-bottom-left" />
