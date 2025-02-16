@@ -92,27 +92,30 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-200 py-8 px-2 md:py-12 md:px-4">
-      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
+    <div className="min-h-screen bg-teal-800 py-8 px-2 md:py-12 md:px-4">
+      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 border-4 border-teal-700/50 rounded-lg p-6 shadow-[0_0_15px_rgba(0,0,0,0.2)] bg-teal-800">
         <div className="text-center space-y-2 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">Monty Hall Game</h1>
-          <p className="text-gray-600">Put your intuition to the test!</p>
+          <h1 className="text-4xl md:text-5xl font-semibold text-white italic tracking-wider">MONTE Casino</h1>
         </div>
 
-        <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
-
-        <div className="w-full max-w-xs mx-auto px-4">
-          <Slider className="mb-4"
-            defaultValue={[3]} 
-            max={8} 
-            min={3} 
-            step={1} 
-            onValueChange={handleNumDoorsChange}
-          />
-          <div className="flex items-center justify-center mb-2">
-            <span className="text-sm font-medium">Difficulty Level {numDoors-2}</span>
+        <div className="bg-teal-700/30 border border-teal-600/30 rounded-lg p-4 space-y-4">
+          <div className="text-center text-xl text-white font-medium">
+            {gameState === "revealed" ? "WOULD YOU LIKE TO STAY OR SWITCH?" : "TEST YOUR FATE"}
           </div>
           
+          <div className="w-full max-w-xs mx-auto">
+            <Slider className="mb-4"
+              defaultValue={[3]} 
+              max={8} 
+              min={3} 
+              step={1} 
+              onValueChange={handleNumDoorsChange}
+            />
+            <div className="flex items-center justify-between text-white/90 text-sm">
+              <span>DIFFICULTY {numDoors}</span>
+              <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
+            </div>
+          </div>
         </div>
 
         <div className={`grid ${getGridCols(numDoors)} gap-2 md:gap-4 py-4 md:py-8`}>
