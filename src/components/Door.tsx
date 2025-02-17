@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DoorClosed, Car, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,13 +18,20 @@ export const Door = ({
   isRevealed,
   isSelected,
   onSelect,
-}: DoorProps) => {
+  totalDoors,
+}: DoorProps & { totalDoors: number }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Calculate size based on total doors
+  const getSize = () => {
+    if (totalDoors <= 3) return "w-full max-w-[320px]"; // One consistent ratio with the gap
+    return "w-full max-w-[240px]"; // Simplified to just two sizes
+  };
 
   return (
     <div
       className={cn(
-        "w-full aspect-[3/4] perspective cursor-pointer transition-transform duration-300",
+        `${getSize()} aspect-[3/4] perspective cursor-pointer transition-transform duration-300`,
         isSelectable && "hover:scale-105",
         !isSelectable && "opacity-80 cursor-not-allowed"
       )}
