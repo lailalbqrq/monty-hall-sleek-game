@@ -24,7 +24,7 @@ export const Door = ({
 
   // Calculate size based on total doors
   const getSize = () => {
-    return "w-full p-0.5"; // change gap between doors HERE
+    return "w-full p-1"; // change gap between doors HERE
   };
 
   return (
