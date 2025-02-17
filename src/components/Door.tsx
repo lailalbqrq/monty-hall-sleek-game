@@ -24,8 +24,7 @@ export const Door = ({
 
   // Calculate size based on total doors
   const getSize = () => {
-    if (totalDoors <= 3) return "w-full max-w-[320px]"; // One consistent ratio with the gap
-    return "w-full max-w-[240px]"; // Simplified to just two sizes
+    return "w-full p-4";
   };
 
   return (

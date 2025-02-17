@@ -3,6 +3,7 @@ import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
 import { toast } from "sonner";
 import { Slider } from "@/components/ui/slider";
+import { cn } from "@/lib/utils";
 
 const Index = () => {
   const [gameState, setGameState] = useState<
@@ -101,14 +102,9 @@ const Index = () => {
     [doors, gameState, resetGame]
   );
 
-  const getGridConfig = (numDoors: number) => {
-    if (numDoors <= 3) return "grid-cols-3 gap-2";
-    return "grid-cols-4 gap-2";
-  };
-
   return (
     <div className="h-screen bg-teal-800 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
-      <div className="w-full h-full max-w-[1400px] mx-auto space-y-2 p-4 bg-teal-800 relative overflow-hidden flex flex-col">
+      <div className="w-full h-full max-w-[1400px] mx-auto p-4 bg-teal-800 relative flex flex-col">
         <div className="flex justify-between items-center text-white/90 text-sm mb-4">
           <span>REVEAL CAR TO WIN</span>
           <span>TEST YOUR FATE</span>
@@ -121,12 +117,12 @@ const Index = () => {
           </h1>
         </div>
 
-        <div className="flex-1 w-full flex items-center justify-center">
+        <div className="flex-1 min-h-0 flex items-center justify-center">
           <div
-            className={`grid ${getGridConfig(
-              numDoors
-            )} max-w-[1200px] w-full place-items-center`}
-            style={{ gap: "8px" }}
+            className={cn(
+              "grid w-[800px] place-items-stretch content-center",
+              `grid-cols-${numDoors <= 4 ? numDoors : 4}`
+            )}
           >
             {doors.map((door, index) => (
               <Door
