@@ -38,15 +38,13 @@ const Index = () => {
 
   useEffect(() => {
     resetGame();
-  }, [numDoors, resetGame]
-  ) 
+  }, [numDoors, resetGame]);
 
   const handleDoorSelect = useCallback((doorIndex: number) => {
     if (gameState === "selecting") {
       const newDoors = [...doors];
       newDoors[doorIndex].isSelected = true;
 
-      // Reveal one empty door that wasn't selected
       const availableDoorsToReveal = doors
         .map((door, i) => ({ door, index: i }))
         .filter(({ door, index }) => index !== doorIndex && !door.hasPrize);
@@ -94,11 +92,6 @@ const Index = () => {
   return (
     <div className="h-screen bg-teal-800 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
       <div className="w-full max-w-4xl mx-auto space-y-4 p-4 bg-teal-800 relative overflow-hidden">
-        <div className="trapezium-corner trapezium-top-left" />
-        <div className="trapezium-corner trapezium-top-right" />
-        <div className="trapezium-corner trapezium-bottom-left" />
-        <div className="trapezium-corner trapezium-bottom-right" />
-        
         <div className="text-center space-y-1 animate-fade-in">
           <h1 className="text-3xl md:text-4xl font-faster text-white tracking-wider">MONTE Casino</h1>
         </div>
