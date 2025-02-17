@@ -100,7 +100,7 @@ const Index = () => {
         <div className="trapezium-corner trapezium-bottom-right" />
         
         <div className="text-center space-y-1 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl font-semibold text-white italic tracking-wider">MONTE Casino</h1>
+          <h1 className="text-3xl md:text-4xl font-faster text-white tracking-wider">MONTE Casino</h1>
         </div>
 
         <div className="bg-teal-700/30 border border-teal-600/30 rounded-lg p-3 space-y-2">

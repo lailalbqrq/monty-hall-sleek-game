@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -113,6 +114,7 @@
   @apply absolute pointer-events-none;
   width: 200px;
   height: 200px;
+  top: -30px;
 }
 
 .trapezium-corner::before {
@@ -124,49 +126,49 @@
 }
 
 .trapezium-top-left {
-  top: 0;
-  left: 0;
+  left: -30px;
 }
 
 .trapezium-top-left::before {
-  top: 0;
-  left: 0;
+  top: 30px;
+  left: 30px;
   transform: skew(-45deg);
   transform-origin: left top;
 }
 
 .trapezium-top-right {
-  top: 0;
-  right: 0;
+  right: -30px;
 }
 
 .trapezium-top-right::before {
-  top: 0;
-  right: 0;
+  top: 30px;
+  right: 30px;
   transform: skew(45deg);
   transform-origin: right top;
 }
 
 .trapezium-bottom-left {
-  bottom: 0;
-  left: 0;
+  bottom: -30px;
+  top: auto;
+  left: -30px;
 }
 
 .trapezium-bottom-left::before {
-  bottom: 0;
-  left: 0;
+  bottom: 30px;
+  left: 30px;
   transform: skew(45deg);
   transform-origin: left bottom;
 }
 
 .trapezium-bottom-right {
-  bottom: 0;
-  right: 0;
+  bottom: -30px;
+  top: auto;
+  right: -30px;
 }
 
 .trapezium-bottom-right::before {
-  bottom: 0;
-  right: 0;
+  bottom: 30px;
+  right: 30px;
   transform: skew(-45deg);
   transform-origin: right bottom;
 }

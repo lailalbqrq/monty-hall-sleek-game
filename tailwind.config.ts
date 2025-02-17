@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -50,7 +49,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        'faster': ['"Faster One"', 'cursive'],
+        'sans': ['Inter', 'sans-serif'],
       },
       keyframes: {
         "door-open": {
