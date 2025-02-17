@@ -119,10 +119,12 @@ const Index = () => {
 
         <div className="flex-1 min-h-0 flex items-center justify-center">
           <div
-            className={cn(
-              "grid w-[800px] place-items-stretch content-center",
-              `grid-cols-${numDoors <= 4 ? numDoors : 4}`
-            )}
+            className="grid w-[800px] place-items-stretch content-center"
+            style={{
+              gridTemplateColumns: `repeat(${
+                numDoors <= 4 ? numDoors : 4
+              }, minmax(0, 1fr))`,
+            }}
           >
             {doors.map((door, index) => (
               <Door
