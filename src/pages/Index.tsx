@@ -92,24 +92,24 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-teal-800 py-8 px-2 md:py-12 md:px-4">
-      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8 p-6 bg-teal-800 relative overflow-hidden">
+    <div className="h-screen bg-teal-800 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
+      <div className="w-full max-w-4xl mx-auto space-y-4 p-4 bg-teal-800 relative overflow-hidden">
         <div className="trapezium-corner trapezium-top-left" />
         <div className="trapezium-corner trapezium-top-right" />
         <div className="trapezium-corner trapezium-bottom-left" />
         <div className="trapezium-corner trapezium-bottom-right" />
         
-        <div className="text-center space-y-2 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-semibold text-white italic tracking-wider">MONTE Casino</h1>
+        <div className="text-center space-y-1 animate-fade-in">
+          <h1 className="text-3xl md:text-4xl font-semibold text-white italic tracking-wider">MONTE Casino</h1>
         </div>
 
-        <div className="bg-teal-700/30 border border-teal-600/30 rounded-lg p-4 space-y-4">
-          <div className="text-center text-xl text-white font-medium">
+        <div className="bg-teal-700/30 border border-teal-600/30 rounded-lg p-3 space-y-2">
+          <div className="text-center text-lg md:text-xl text-white font-medium">
             {gameState === "revealed" ? "WOULD YOU LIKE TO STAY OR SWITCH?" : "TEST YOUR FATE"}
           </div>
           
           <div className="w-full max-w-xs mx-auto">
-            <Slider className="mb-4"
+            <Slider className="mb-2"
               defaultValue={[3]} 
               max={8} 
               min={3} 
@@ -123,7 +123,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className={`grid ${getGridCols(numDoors)} gap-2 md:gap-4 py-4 md:py-8`}>
+        <div className={`grid ${getGridCols(numDoors)} gap-2 py-2 md:py-4`}>
           {doors.map((door, index) => (
             <Door
               key={index}
