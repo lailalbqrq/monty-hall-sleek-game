@@ -25,6 +25,7 @@
     --input: 240 5.9% 90%;
     --ring: 346.8 77.2% 49.8%;
     --radius: 0.75rem;
+    --gold: 45 100% 50%;
   }
 }
 
@@ -47,11 +48,11 @@
 }
 
 .door-front {
-  @apply absolute inset-0 bg-white shadow-lg rounded-lg border-2 backface-hidden;
+  @apply absolute inset-0 backface-hidden;
   transform: translateZ(1px);
 }
 
 .door-back {
-  @apply absolute inset-0 bg-gradient-to-br from-rose-50 to-rose-100 shadow-lg rounded-lg border-2 backface-hidden;
+  @apply absolute inset-0 backface-hidden;
   transform: rotateY(180deg) translateZ(1px);
 }
