@@ -1,7 +1,7 @@
+
 import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
-import { toast } from "sonner";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +26,7 @@ const Index = () => {
   };
 
   const [stats, setStats] = useState({ gamesPlayed: 0, gamesWon: 0 });
+  
   const resetGame = useCallback(() => {
     const prizeLocation = Math.floor(Math.random() * numDoors);
     setDoors(
@@ -38,15 +39,24 @@ const Index = () => {
         }))
     );
     setGameState("selecting");
-    toast("Pick a door to play!", {
-      position: "bottom-center",
-      className: "bg-teal-900 border border-white/10 text-white font-medium",
-    });
   }, [numDoors]);
 
   useEffect(() => {
     resetGame();
   }, [numDoors, resetGame]);
+
+  const getStatusMessage = () => {
+    switch (gameState) {
+      case "selecting":
+        return "PICK A DOOR TO PLAY";
+      case "revealed":
+        return "WOULD YOU LIKE TO STAY OR SWITCH?";
+      case "finished":
+        return "GAME OVER";
+      default:
+        return "TEST YOUR FATE";
+    }
+  };
 
   const handleDoorSelect = useCallback(
     (doorIndex: number) => {
@@ -66,11 +76,6 @@ const Index = () => {
 
         setDoors(newDoors);
         setGameState("revealed");
-        toast("Would you like to stay or switch?", {
-          position: "bottom-center",
-          className:
-            "bg-teal-900 border border-white/10 text-white font-medium",
-        });
       } else if (gameState === "revealed") {
         const newDoors = doors.map((door, i) => ({
           ...door,
@@ -86,15 +91,6 @@ const Index = () => {
           gamesPlayed: prev.gamesPlayed + 1,
           gamesWon: prev.gamesWon + (won ? 1 : 0),
         }));
-
-        toast(
-          won ? "Congratulations! You won! 🎉" : "Sorry, you lost! Try again!",
-          {
-            position: "bottom-center",
-            className:
-              "bg-teal-900 border border-white/10 text-white font-medium",
-          }
-        );
 
         setTimeout(resetGame, 800);
       }
@@ -145,7 +141,7 @@ const Index = () => {
         <div className="mt-4">
           <div className="border border-white/10 rounded-none">
             <div className="text-center text-lg text-white font-medium border-b border-white/10 py-2">
-              {gameState === "revealed" ? "WOULD YOU LIKE TO STAY OR SWITCH?" : "TEST YOUR FATE"}
+              {getStatusMessage()}
             </div>
             
             <div className="grid grid-cols-2 divide-x divide-white/10">
