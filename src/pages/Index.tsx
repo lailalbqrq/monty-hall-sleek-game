@@ -102,9 +102,19 @@ const Index = () => {
     [doors, gameState, resetGame]
   );
 
+  const getGridCols = (num: number) => {
+    if (num <= 3) {
+      return "grid-cols-3";
+    } else if (num === 4) {
+      return "grid-cols-4";
+    } else {
+      return "grid-cols-4 md:grid-cols-5";
+    }
+  };
+
   return (
-    <div className="h-screen bg-teal-800 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
-      <div className="w-full h-full max-w-[1400px] mx-auto p-4 bg-teal-800 relative flex flex-col">
+    <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
+      <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative overflow-hidden">
         <div className="flex justify-between items-center text-white/90 text-sm mb-4">
           <span>REVEAL CAR TO WIN</span>
           <span>TEST YOUR FATE</span>
@@ -112,54 +122,40 @@ const Index = () => {
         </div>
 
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-faster text-white tracking-wider">
-            MONTE Casino
-          </h1>
+          <h1 className="text-3xl md:text-4xl font-faster text-white tracking-wider">MONTE Casino</h1>
         </div>
 
-        <div className="flex-1 min-h-0 flex items-center justify-center">
-          <div
-            className="grid w-[800px] place-items-stretch content-center"
-            style={{
-              gridTemplateColumns: `repeat(${
-                numDoors <= 4 ? numDoors : 4
-              }, minmax(0, 1fr))`,
-            }}
-          >
-            {doors.map((door, index) => (
-              <Door
-                key={index}
-                doorNumber={index + 1}
-                hasPrize={door.hasPrize}
-                isSelectable={
-                  gameState === "selecting" ||
-                  (gameState === "revealed" && !door.isRevealed)
-                }
-                isRevealed={door.isRevealed}
-                isSelected={door.isSelected}
-                onSelect={handleDoorSelect}
-                totalDoors={numDoors}
-              />
-            ))}
-          </div>
+        <div className={`grid ${getGridCols(numDoors)} gap-2 py-2 md:py-4`}>
+          {doors.map((door, index) => (
+            <Door
+              key={index}
+              doorNumber={index + 1}
+              hasPrize={door.hasPrize}
+              isSelectable={
+                gameState === "selecting" ||
+                (gameState === "revealed" && !door.isRevealed)
+              }
+              isRevealed={door.isRevealed}
+              isSelected={door.isSelected}
+              onSelect={handleDoorSelect}
+            />
+          ))}
         </div>
 
         <div className="mt-4">
           <div className="border border-white/10 rounded-none">
             <div className="text-center text-lg text-white font-medium border-b border-white/10 py-2">
-              {gameState === "revealed"
-                ? "WOULD YOU LIKE TO STAY OR SWITCH?"
-                : "TEST YOUR FATE"}
+              {gameState === "revealed" ? "WOULD YOU LIKE TO STAY OR SWITCH?" : "TEST YOUR FATE"}
             </div>
-
+            
             <div className="grid grid-cols-2 divide-x divide-white/10">
               <div className="p-3">
-                <Slider
+                <Slider 
                   className="mb-2"
-                  defaultValue={[3]}
-                  max={8}
-                  min={3}
-                  step={1}
+                  defaultValue={[3]} 
+                  max={8} 
+                  min={3} 
+                  step={1} 
                   onValueChange={handleNumDoorsChange}
                 />
                 <div className="text-white/90 text-sm">
@@ -167,10 +163,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="p-3">
-                <GameStats
-                  gamesPlayed={stats.gamesPlayed}
-                  gamesWon={stats.gamesWon}
-                />
+                <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
               </div>
             </div>
           </div>

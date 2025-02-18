@@ -43,22 +43,22 @@ export const Door = ({
       >
         {/* Card Back */}
         <div className="door-front">
-          <div className="w-full h-full bg-gradient-to-br from-blue-900 to-blue-950 rounded-lg border border-white/10">
+          <div className="w-full h-full bg-gradient-to-br from-teal-800 to-teal-900 rounded-lg border border-white/10">
             {/* Casino Pattern */}
             <div className="w-full h-full p-4 relative">
               {/* Center Pattern */}
-              <div className="absolute inset-4 border-2 border-gold/20 rounded-lg">
-                <div className="absolute inset-2 border border-gold/10 rounded-lg" />
+              <div className="absolute inset-4 border-2 border-teal-400/20 rounded-lg">
+                <div className="absolute inset-2 border border-teal-400/10 rounded-lg" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 border-2 border-gold/20 rounded-full flex items-center justify-center rotate-45">
-                    <div className="w-8 h-8 border border-gold/10 rounded-full" />
+                  <div className="w-12 h-12 border-2 border-teal-400/20 rounded-full flex items-center justify-center rotate-45">
+                    <div className="w-8 h-8 border border-teal-400/10 rounded-full" />
                   </div>
                 </div>
                 {/* Corner Patterns */}
                 {[0, 1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="absolute w-6 h-6 border border-gold/20"
+                    className="absolute w-6 h-6 border border-teal-400/20"
                     style={{
                       [i < 2 ? "top" : "bottom"]: "0.5rem",
                       [i % 2 === 0 ? "left" : "right"]: "0.5rem",
@@ -74,7 +74,7 @@ export const Door = ({
         <div className="door-back">
           {hasPrize ? (
             // Car Card
-            <div className="w-full h-full bg-gradient-to-br from-rose-500 to-rose-600 rounded-lg border border-white/10 p-4">
+            <div className="w-full h-full bg-gradient-to-br from-teal-600 to-teal-700 rounded-lg border border-white/10 p-4">
               <div className="w-full h-full border-2 border-white/20 rounded-lg flex items-center justify-center">
                 <div className="text-white/90 flex flex-col items-center gap-2">
                   <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center">
@@ -94,7 +94,7 @@ export const Door = ({
             </div>
           ) : (
             // Joker Card
-            <div className="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg border border-white/10 p-4">
+            <div className="w-full h-full bg-gradient-to-br from-teal-700 to-teal-800 rounded-lg border border-white/10 p-4">
               <div className="w-full h-full border-2 border-white/20 rounded-lg flex items-center justify-center">
                 <div className="text-white/90 flex flex-col items-center gap-2">
                   <div className="w-16 h-16 border-2 border-white/20 rounded-full flex items-center justify-center">
