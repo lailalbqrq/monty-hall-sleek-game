@@ -10,6 +10,7 @@ const Index = () => {
     "selecting" | "revealed" | "finished"
   >("selecting");
   const [numDoors, setNumDoors] = useState<number>(3);
+  const [gameResult, setGameResult] = useState<"won" | "lost" | null>(null);
   const [doors, setDoors] = useState(() => {
     const prizeLocation = Math.floor(Math.random() * numDoors);
     return Array(numDoors)
@@ -39,6 +40,7 @@ const Index = () => {
         }))
     );
     setGameState("selecting");
+    setGameResult(null);
   }, [numDoors]);
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const Index = () => {
       case "revealed":
         return "WOULD YOU LIKE TO STAY OR SWITCH?";
       case "finished":
-        return "GAME OVER";
+        return gameResult === "won" ? "CONGRATS! YOU WON" : "YOU LOST! TRY AGAIN";
       default:
         return "TEST YOUR FATE";
     }
@@ -87,6 +89,7 @@ const Index = () => {
         setGameState("finished");
 
         const won = newDoors[doorIndex].hasPrize;
+        setGameResult(won ? "won" : "lost");
         setStats((prev) => ({
           gamesPlayed: prev.gamesPlayed + 1,
           gamesWon: prev.gamesWon + (won ? 1 : 0),
