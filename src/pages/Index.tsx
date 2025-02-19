@@ -112,62 +112,69 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex items-center justify-center">
-      <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative overflow-hidden">
-        <div className="flex justify-between items-center text-white/90 text-sm mb-4">
-          <span>REVEAL CAR TO WIN</span>
-          <span>TEST YOUR FATE</span>
-          <span>PRESS CTR + R TO REFRESH</span>
-        </div>
-
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-faster text-white tracking-wider">MONTE Casino</h1>
-        </div>
-
-        <div className={`grid ${getGridCols(numDoors)} gap-2 py-2 md:py-4`}>
-          {doors.map((door, index) => (
-            <Door
-              key={index}
-              doorNumber={index + 1}
-              hasPrize={door.hasPrize}
-              isSelectable={
-                gameState === "selecting" ||
-                (gameState === "revealed" && !door.isRevealed)
-              }
-              isRevealed={door.isRevealed}
-              isSelected={door.isSelected}
-              onSelect={handleDoorSelect}
-            />
-          ))}
-        </div>
-
-        <div className="mt-4">
-          <div className="border border-white/10 rounded-none">
-            <div className="text-center text-lg text-white font-medium border-b border-white/10 py-2">
-              {getStatusMessage()}
+    <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex flex-col justify-between">
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative">
+          <div className="flex justify-between items-center text-white/90 text-sm mb-4">
+            <div className="flex w-full md:w-auto justify-between md:justify-start gap-4 md:gap-8">
+              <span>REVEAL CAR TO WIN</span>
+              <span>TEST YOUR FATE</span>
             </div>
-            
-            <div className="grid grid-cols-2 divide-x divide-white/10">
-              <div className="p-3">
-                <Slider 
-                  className="mb-2"
-                  defaultValue={[3]} 
-                  max={8} 
-                  min={3} 
-                  step={1} 
-                  onValueChange={handleNumDoorsChange}
-                />
-                <div className="text-white/90 text-sm">
-                  <span>DIFFICULTY {numDoors}</span>
-                </div>
+            <span className="hidden md:block">PRESS CTR + R TO REFRESH</span>
+          </div>
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-6xl font-faster text-white tracking-wider w-full">MONTE Casino</h1>
+          </div>
+
+          <div className={`grid ${getGridCols(numDoors)} gap-2 py-2 md:py-4`}>
+            {doors.map((door, index) => (
+              <Door
+                key={index}
+                doorNumber={index + 1}
+                hasPrize={door.hasPrize}
+                isSelectable={
+                  gameState === "selecting" ||
+                  (gameState === "revealed" && !door.isRevealed)
+                }
+                isRevealed={door.isRevealed}
+                isSelected={door.isSelected}
+                onSelect={handleDoorSelect}
+              />
+            ))}
+          </div>
+
+          <div className="mt-4">
+            <div className="border border-white/10 rounded-none">
+              <div className="text-center text-lg text-white font-medium border-b border-white/10 py-2">
+                {getStatusMessage()}
               </div>
-              <div className="p-3">
-                <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
+              
+              <div className="grid grid-cols-2 divide-x divide-white/10">
+                <div className="p-3">
+                  <Slider 
+                    className="mb-2"
+                    defaultValue={[3]} 
+                    max={8} 
+                    min={3} 
+                    step={1} 
+                    onValueChange={handleNumDoorsChange}
+                  />
+                  <div className="text-white/90 text-sm">
+                    <span>DIFFICULTY {numDoors}</span>
+                  </div>
+                </div>
+                <div className="p-3">
+                  <GameStats gamesPlayed={stats.gamesPlayed} gamesWon={stats.gamesWon} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <footer className="text-center text-white/60 text-sm py-2">
+        Game designed and developed by laquery.com © 2025 laquery
+      </footer>
     </div>
   );
 };
