@@ -121,14 +121,15 @@ const Index = () => {
             <span className="hidden md:block">PRESS CTR + R TO REFRESH</span>
           </div>
 
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <h1 className="text-3xl md:text-6xl font-faster text-white tracking-wider w-full">MONTE Casino</h1>
           </div>
 
           <div className={cn(
-            "grid gap-4 md:gap-6 py-2 md:py-4 flex-1 min-h-0",
+            "grid gap-4 md:gap-6 py-2 md:py-4 flex-1 min-h-0 overflow-hidden",
             getGridCols(numDoors),
-            "justify-center content-center mx-auto w-full max-w-[900px]"
+            "justify-center content-center mx-auto w-full max-w-[900px]",
+            numDoors > 4 ? "h-[40vh] md:h-[45vh]" : "h-[35vh] md:h-[40vh]"
           )}>
             {doors.map((door, index) => (
               <Door
@@ -146,7 +147,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-4">
+          <div className="mt-auto">
             <div className="border border-white/10 rounded-none">
               <div className="text-center text-lg text-white font-medium border-b border-white/10 py-2">
                 {getStatusMessage()}
