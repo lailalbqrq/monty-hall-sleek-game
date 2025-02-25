@@ -104,17 +104,15 @@ const Index = () => {
   const getGridCols = (num: number) => {
     if (num <= 3) {
       return "grid-cols-3";
-    } else if (num === 4) {
-      return "grid-cols-4";
     } else {
-      return "grid-cols-4 md:grid-cols-5";
+      return "grid-cols-4";
     }
   };
 
   return (
     <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex flex-col justify-between">
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
+        <div className="w-full max-w-4xl mx-auto space-y-2 p-4 md:p-8 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
           <div className="flex justify-between items-center text-white/90 text-sm mb-4">
             <div className="flex w-full md:w-auto justify-between md:justify-start gap-4 md:gap-8">
               <span>REVEAL CAR TO WIN</span>
@@ -127,7 +125,11 @@ const Index = () => {
             <h1 className="text-3xl md:text-6xl font-faster text-white tracking-wider w-full">MONTE Casino</h1>
           </div>
 
-          <div className={`grid ${getGridCols(numDoors)} gap-2 py-2 md:py-4 flex-1 min-h-0`}>
+          <div className={cn(
+            "grid gap-4 md:gap-6 py-2 md:py-4 flex-1 min-h-0",
+            getGridCols(numDoors),
+            "justify-center content-center mx-auto w-full max-w-[900px]"
+          )}>
             {doors.map((door, index) => (
               <Door
                 key={index}
