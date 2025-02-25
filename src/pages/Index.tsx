@@ -112,8 +112,8 @@ const Index = () => {
   return (
     <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex flex-col justify-between">
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-full max-w-4xl mx-auto space-y-2 p-4 md:p-8 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
-          <div className="flex justify-between items-center text-white/90 text-sm mb-4">
+        <div className="w-full max-w-4xl mx-auto space-y-4 p-4 md:p-8 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
+          <div className="flex justify-between items-center text-white/90 text-sm">
             <div className="flex w-full md:w-auto justify-between md:justify-start gap-4 md:gap-8">
               <span>REVEAL CAR TO WIN</span>
               <span>TEST YOUR FATE</span>
@@ -121,15 +121,15 @@ const Index = () => {
             <span className="hidden md:block">PRESS CTR + R TO REFRESH</span>
           </div>
 
-          <div className="text-center mb-4">
+          <div className="text-center">
             <h1 className="text-3xl md:text-6xl font-faster text-white tracking-wider w-full">MONTE Casino</h1>
           </div>
 
           <div className={cn(
-            "grid gap-4 md:gap-6 py-2 md:py-4 flex-1 min-h-0",
+            "grid gap-4 md:gap-6",
             getGridCols(numDoors),
             "justify-center content-center mx-auto w-full max-w-[900px]",
-            numDoors > 4 ? "h-[40vh] md:h-[45vh]" : "h-[35vh] md:h-[40vh]"
+            numDoors > 4 ? "h-[45vh]" : "h-[40vh]"
           )}>
             {doors.map((door, index) => (
               <Door
