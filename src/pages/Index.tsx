@@ -116,9 +116,9 @@ const Index = () => {
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
           <div className="flex justify-between items-center text-white/90 text-sm mb-4">
-            <div className="flex w-full md:w-auto justify-between md:justify-start gap-4 md:gap-8">
+            <div className="flex flex-col md:flex-row w-full md:w-auto md:justify-start gap-4 md:gap-8 items-center">
               <span>REVEAL CAR TO WIN</span>
-              <span className="text-center">TEST YOUR FATE</span>
+              <span>TEST YOUR FATE</span>
             </div>
             <span className="hidden md:block">PRESS CTR + R TO REFRESH</span>
           </div>
