@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
@@ -115,12 +114,10 @@ const Index = () => {
     <div className="h-screen bg-teal-900 py-2 px-2 md:py-4 md:px-4 flex flex-col justify-between">
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
-          <div className="flex justify-between items-center text-white/90 text-sm mb-4">
-            <div className="flex flex-col md:flex-row w-full md:w-auto md:justify-start gap-4 md:gap-8 items-center">
-              <span>REVEAL CAR TO WIN</span>
-              <span>TEST YOUR FATE</span>
-            </div>
-            <span className="hidden md:block">PRESS CTR + R TO REFRESH</span>
+          <div className="grid grid-cols-3 text-white/90 text-sm mb-4">
+            <div className="text-center">REVEAL CAR TO WIN</div>
+            <div className="text-center">TEST YOUR FATE</div>
+            <div className="text-right hidden md:block">PRESS CTR + R TO REFRESH</div>
           </div>
 
           <div className="text-center mb-8">
