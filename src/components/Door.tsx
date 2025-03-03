@@ -24,11 +24,10 @@ export const Door = ({
   return (
     <div
       className={cn(
-        "h-full perspective cursor-pointer transition-transform duration-300",
+        "w-full aspect-[3/4] perspective cursor-pointer transition-transform duration-300",
         isSelectable && "hover:scale-105",
         !isSelectable && "opacity-80 cursor-not-allowed"
       )}
-      style={{ aspectRatio: '3/4' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => isSelectable && onSelect(doorNumber - 1)}
