@@ -1,3 +1,4 @@
+
 import { useState, useCallback, useEffect } from "react";
 import { Door } from "@/components/Door";
 import { GameStats } from "@/components/GameStats";
@@ -115,7 +116,7 @@ const Index = () => {
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-4xl mx-auto space-y-2 p-4 bg-teal-900 relative h-[calc(100vh-6rem)] flex flex-col">
           <div className="grid grid-cols-3 text-white/90 text-sm mb-4">
-            <div className="text-center">REVEAL CAR TO WIN</div>
+            <div className="text-left">REVEAL CAR TO WIN</div>
             <div className="text-center">TEST YOUR FATE</div>
             <div className="text-right hidden md:block">PRESS CTR + R TO REFRESH</div>
           </div>
